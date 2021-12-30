@@ -1,10 +1,15 @@
+{-# LANGUAGE CPP #-}
 {-# OPTIONS_GHC -fno-warn-missing-signatures#-}
 module Text.HTMLEntity.Table where
 import Data.HashMap.Strict (fromList)
 import Data.Text (pack)
 names
   = fromList
-      [(pack "AElig", pack "\198"), (pack "AMP", pack "&"),
+      [(pack "amp", pack "&"), (pack "AMP", pack "&"),
+       (pack "GT", pack ">"), (pack "gt", pack ">"),
+       (pack "LT", pack "<"), (pack "lt", pack "<"),
+#if 0
+       (pack "AElig", pack "\198"),
        (pack "Aacute", pack "\193"), (pack "Abreve", pack "\258"),
        (pack "Acirc", pack "\194"), (pack "Acy", pack "\1040"),
        (pack "Afr", pack "\120068"), (pack "Agrave", pack "\192"),
@@ -106,7 +111,7 @@ names
        (pack "FilledVerySmallSquare", pack "\9642"),
        (pack "Fopf", pack "\120125"), (pack "ForAll", pack "\8704"),
        (pack "Fouriertrf", pack "\8497"), (pack "Fscr", pack "\8497"),
-       (pack "GJcy", pack "\1027"), (pack "GT", pack ">"),
+       (pack "GJcy", pack "\1027"),
        (pack "Gamma", pack "\915"), (pack "Gammad", pack "\988"),
        (pack "Gbreve", pack "\286"), (pack "Gcedil", pack "\290"),
        (pack "Gcirc", pack "\284"), (pack "Gcy", pack "\1043"),
@@ -147,7 +152,7 @@ names
        (pack "Kcedil", pack "\310"), (pack "Kcy", pack "\1050"),
        (pack "Kfr", pack "\120078"), (pack "Kopf", pack "\120130"),
        (pack "Kscr", pack "\119974"), (pack "LJcy", pack "\1033"),
-       (pack "LT", pack "<"), (pack "Lacute", pack "\313"),
+       (pack "Lacute", pack "\313"),
        (pack "Lambda", pack "\923"), (pack "Lang", pack "\10218"),
        (pack "Laplacetrf", pack "\8466"), (pack "Larr", pack "\8606"),
        (pack "Lcaron", pack "\317"), (pack "Lcedil", pack "\315"),
@@ -418,7 +423,7 @@ names
        (pack "afr", pack "\120094"), (pack "agrave", pack "\224"),
        (pack "alefsym", pack "\8501"), (pack "aleph", pack "\8501"),
        (pack "alpha", pack "\945"), (pack "amacr", pack "\257"),
-       (pack "amalg", pack "\10815"), (pack "amp", pack "&"),
+       (pack "amalg", pack "\10815"),
        (pack "and", pack "\8743"), (pack "andand", pack "\10837"),
        (pack "andd", pack "\10844"), (pack "andslope", pack "\10840"),
        (pack "andv", pack "\10842"), (pack "ang", pack "\8736"),
@@ -662,7 +667,7 @@ names
        (pack "gopf", pack "\120152"), (pack "grave", pack "`"),
        (pack "gscr", pack "\8458"), (pack "gsim", pack "\8819"),
        (pack "gsime", pack "\10894"), (pack "gsiml", pack "\10896"),
-       (pack "gt", pack ">"), (pack "gtcc", pack "\10919"),
+       (pack "gtcc", pack "\10919"),
        (pack "gtcir", pack "\10874"), (pack "gtdot", pack "\8919"),
        (pack "gtlPar", pack "\10645"), (pack "gtquest", pack "\10876"),
        (pack "gtrapprox", pack "\10886"), (pack "gtrarr", pack "\10616"),
@@ -795,7 +800,7 @@ names
        (pack "lsim", pack "\8818"), (pack "lsime", pack "\10893"),
        (pack "lsimg", pack "\10895"), (pack "lsqb", pack "["),
        (pack "lsquo", pack "\8216"), (pack "lsquor", pack "\8218"),
-       (pack "lstrok", pack "\322"), (pack "lt", pack "<"),
+       (pack "lstrok", pack "\322"),
        (pack "ltcc", pack "\10918"), (pack "ltcir", pack "\10873"),
        (pack "ltdot", pack "\8918"), (pack "lthree", pack "\8907"),
        (pack "ltimes", pack "\8905"), (pack "ltlarr", pack "\10614"),
@@ -1230,9 +1235,11 @@ names
        (pack "zeta", pack "\950"), (pack "zfr", pack "\120119"),
        (pack "zhcy", pack "\1078"), (pack "zigrarr", pack "\8669"),
        (pack "zopf", pack "\120171"), (pack "zscr", pack "\120015"),
+#endif
        (pack "zwj", pack "\8205"), (pack "zwnj", pack "\8204")]
 
 {-# NOINLINE names #-}
+
 entitiesMulti
   = fromList
       [(pack "<\8402", pack "nvlt"), (pack "=\8421", pack "bne"),
@@ -1302,6 +1309,7 @@ entitiesSingle
        ('\\', pack "bsol"), (']', pack "rsqb"), ('^', pack "Hat"),
        ('_', pack "lowbar"), ('`', pack "grave"), ('{', pack "lcub"),
        ('|', pack "vert"), ('}', pack "rcub"), ('\160', pack "nbsp"),
+#if 0
        ('\161', pack "iexcl"), ('\162', pack "cent"),
        ('\163', pack "pound"), ('\164', pack "curren"),
        ('\165', pack "yen"), ('\166', pack "brvbar"),
@@ -2008,6 +2016,7 @@ entitiesSingle
        ('\120164', pack "sopf"), ('\120165', pack "topf"),
        ('\120166', pack "uopf"), ('\120167', pack "vopf"),
        ('\120168', pack "wopf"), ('\120169', pack "xopf"),
+#endif
        ('\120170', pack "yopf"), ('\120171', pack "zopf")]
 
 {-# NOINLINE entitiesSingle #-}
